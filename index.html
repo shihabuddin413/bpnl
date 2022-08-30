@@ -1,0 +1,270 @@
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Profit & Loss calculator · v1.2</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+
+
+    <style>
+      body{
+        margin :0;
+        padding: 0;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+      .foot{
+        position: sticky;
+        top:90vh;
+        left: 0;
+        height: 6vh;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <!-- Custom styles for this template -->
+   </head>
+  <body class="text-center">
+ 
+<h3 class="display-6 pb-3 bg-warning border-bottom">
+  <span class="bg-dark text-warning px-2 py-1 text-left rounded">B</span><span class="">change</span> PNL 
+</h3>
+
+<div class="container p-3">
+<main class="form-signin w-100 m-auto">
+  <div class="d-flex flex-row">
+    <div class="form-floating m-2">
+      <input 
+      type="number"
+      class="form-control text-center" 
+      id="enp" 
+      value='0'>
+      <label for="enp">Entry Price
+      </label>
+    </div>
+    <div class="form-floating m-2">
+      <input 
+      type="number" 
+      class="form-control text-center" 
+      id="inv"
+      value='0'>
+      <label for="inv">Size</label>
+    </div>
+   </div>
+   
+ <div class="d-flex flex-row">
+    <div class="col-auto m-2">
+      <label class="visually-hidden" for="lev">Leverage</label>
+      <div class="input-group">
+        <div class="input-group-text">Leverage(x)</div>
+        <input 
+        type="text"
+        id="lev" 
+        value="1"
+        style = " width: 50px; "
+        class="form-control "
+        placeholder="Leverage">
+      </div>
+    </div>
+    
+    <div class="form-floating m-2 w-100">
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group w-100">
+       <input type="radio" class="btn-check w-100" id="long" name="type" autocomplete="off" checked>
+       <label class="btn btn-outline-primary" for="long">Long</label>
+       <input type="radio" class="btn-check w-100" id="short" name="type" autocomplete="off">
+       <label class="btn btn-outline-primary" for="short">Short</label>
+      </div>
+    </div>
+  </div>
+  
+<div class="d-flex flex-row">
+  
+    <div class="form-floating m-2">
+      <input 
+      type="number" 
+      class="form-control text-center" 
+      id="tp1" 
+      value='0'>
+      <label for="tp1">TP(Min) </label>
+    </div>
+    
+     <div class="form-floating m-2">
+      <input 
+      type="number" 
+      class="form-control text-center" 
+      id="tp4" 
+      value='0'>
+      <label for="tp4">TP(Max)</label>
+     </div>
+</div>
+  
+  <button class="w-90 btn btn-lg btn-primary m-3" id="calBtn">Calculate</button>
+  
+  <div class="card text-center mt-2">
+  <div class="card-header">
+    Results 
+  </div>
+  <div class="card-body">
+    <div class="card-title ">
+      <div class="d-flex flex-row w-100"> 
+        <p class="border rounded mx-1 w-100 p-2">
+          <span class="text-muted m-0 p-0">Min</span>
+          <p class="bg-primary text-light px-3 py-2 rounded w-100" id="tp1d">0</p>
+        </p>
+      </div>
+      <div class="d-flex flex-row w-100 "> 
+        <p class="border rounded mx-1 w-100 p-2">
+          <span class="text-muted ">Max</span> 
+          <p class="bg-primary text-light px-3 py-2 rounded w-100" id="tp4d">0</p>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    Time elepse: 24h
+  </div>
+</div>
+
+</main>
+
+</div>  
+
+
+    <footer class="foot display-6 border-top"
+    style="font-size:18px !important;">
+      ©2022 - Bchange.inc - Shihabe Uddin
+    </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    var enp = document.getElementById("enp")
+    var exp = document.getElementById("exp")
+    var lev = document.getElementById("lev")
+    var inv = document.getElementById("inv")
+    
+    var tp1 = document.getElementById("tp1")
+    //var tp2 = document.getElementById("tp2")
+    //var tp3 = document.getElementById("tp3")
+    var tp4 = document.getElementById("tp4")
+    
+    var tp1d = document.getElementById("tp1d")
+    //var tp2d = document.getElementById("tp2d")
+    //var tp3d = document.getElementById("tp3d")
+    var tp4d = document.getElementById("tp4d")
+    var calBtn = document.getElementById("calBtn")
+    
+    var longBtn = document.getElementById('long')
+    var shortBtn = document.getElementById('short')
+    
+    
+    
+    
+    function calculatePNL(size,ep,ex,tt,lv=1){
+      if (size==0 || ep==0 || ex==0 || lv==0){
+        return "--"
+      }
+      
+      let invest=size*lv*ep
+      let shares = invest/ep
+      let profit = 0
+      
+      if (tt == "l"){
+         profit = (shares*ex)-(shares*ep)
+      }
+      else {
+         profit = (shares*ep)-(shares*ex)
+      }
+      
+      return profit.toFixed(2)
+    }
+    
+    calBtn.addEventListener( 'click', ()=>{
+       let enpVal = enp.value
+       let levVal = lev.value
+       let invVal = inv.value
+       
+       let tp1Val = tp1.value
+       //let tp2Val = tp2.value
+       //let tp3Val = tp3.value
+       let tp4Val = tp4.value
+       
+       let isLong = longBtn.checked
+       let isShort = shortBtn.checked
+       let tradeType = isLong ? 'l' : 's'
+       // console.log(tradeType)
+
+       
+       tp1d.textContent = calculatePNL(invVal, enpVal, tp1Val, tradeType, levVal)
+       //tp2d.textContent = calculatePNL(invVal, enpVal, tp2Val, tradeType, levVal)
+       //tp3d.textContent = calculatePNL(invVal, enpVal, tp3Val, tradeType, levVal)
+       tp4d.textContent = calculatePNL(invVal, enpVal, tp4Val, tradeType, levVal)
+
+    })
+    
+   
+ 
+  </script>
+  
+  </body>
+</html>
